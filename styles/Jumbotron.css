@@ -1,0 +1,52 @@
+.bgGradient {
+    background: rgb(107,66,254);
+    background: linear-gradient(128deg, rgba(107,66,254,1) 0%, rgba(133,66,245,1) 34%, rgba(253,157,70,1) 100%);
+}
+
+.bgGradientBackground {
+    background: rgb(53,36,146);
+    background: radial-gradient(circle, rgba(53,36,146,0.9950105042016807) 0%, rgba(229,229,253,1) 53%, rgba(241,231,255,1) 100%);
+}
+
+.bgGradientBackgroundUp {
+    background: rgb(229,229,253);
+    background: radial-gradient(circle, rgba(229,229,253,1) 48%, rgba(241,231,255,1) 80%);
+}
+
+.bgGlassmorphismTransparent { 
+    /*Main*/
+    background: rgba(255, 255, 255, 0.13);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.3px);
+    -webkit-backdrop-filter: blur(1.3px);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+}
+
+.bgGlassmorphismWhite {
+    /*Blm ada*/
+    background: rgba(255, 255, 255, 0.66);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+}
+
+.bgGlassmorphismBlur {
+    /* Form */
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+}
+
+.bgGlassmorphismBlury {
+    /*Table and Header*/
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    }

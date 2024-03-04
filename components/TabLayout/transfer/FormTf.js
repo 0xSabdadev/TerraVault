@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 import {useEffect, useState} from 'react'
-import data1 from '../../../build/contracts/MultiSigTA.json' assert {type: 'json'}
+import data1 from '../../../build/contracts/ThresholdSignature.json' assert {type: 'json'}
 import {toast} from 'sonner'
 
 export default function FormTf({
@@ -43,20 +43,30 @@ export default function FormTf({
                 from: user.address,
             })
 
-            const tf = await contractInstance.methods
+            const message = web3.utils.soliditySha3(
+                {t: 'string', v: 'ETH'},
+                {t: 'address', v: receiverAddr},
+                {t: 'uint256', v: web3.utils.toWei(tfAmount.toString(), 'ether')},
+            )
+
+            const signature = await web3.eth.personal.sign(message, user.address, '')
+
+            const tx = await contractInstance.methods
                 .createTransferRequest(
                     'ETH',
                     receiverAddr,
-                    web3.utils.toWei(String(tfAmount), 'ether'),
+                    web3.utils.toWei(tfAmount.toString(), 'ether'),
+                    signature,
                 )
-                .send({from: user.address})
+                .send({from: user.address, gas: 900000}) // Sesuaikan dengan kebutuhan
+
             toast.success('TF Created successful!')
             loadBlockchainData(currentSelectedWallet)
             loadPendingTransfers(currentSelectedWallet)
             loadAccountsTables(currentSelectedWallet, 'transferCreated')
         } catch (error) {
-            console.error('Error during create tf:', error)
-            toast.error('User denied the transaction.')
+            console.error('Error during create tf:' + error, error)
+            toast.error('User denied the transaction or other error occurred.')
         } finally {
             setLoadingTf(false)
         }

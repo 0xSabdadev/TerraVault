@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 import {useEffect, useState} from 'react'
 import {useRouter} from 'next/router'
-import data1 from '../../../build/contracts/MultiSigTA.json' assert {type: 'json'}
+import data1 from '../../../build/contracts/ThresholdSignature.json' assert {type: 'json'}
 import {toast} from 'sonner'
 
 export default function ModalDepo({isOpen, onClose, idTx, listDepo, header}) {
@@ -45,7 +45,7 @@ export default function ModalDepo({isOpen, onClose, idTx, listDepo, header}) {
     return (
         <>
             {isOpen && (
-                <div className='flex fixed z-30 top-0 left-0 w-full h-full justify-center items-center bg-[#00000080]'>
+                <div className='flex fixed z-30 top-0 left-0 w-full h-full justify-center items-center bg-[#d5d7da80]'>
                     <div
                         className='relative p-4 w-full max-w-2xl max-h-full'
                         onClick={e => e.stopPropagation()}>
@@ -85,15 +85,16 @@ export default function ModalDepo({isOpen, onClose, idTx, listDepo, header}) {
                                         <table className='font-roboto w-full text-sm text-left rtl:text-right text-purplemain dark:text-gray-400 border  border-purplemain'>
                                             <tbody>
                                                 <tr className='border-b border-purplemain'>
-                                                        <td className='py-2 px-4'>TimeStamp</td>
-                                                        <td className='py-2 px-4'>
-                                                            :{' '}
-                                                            {new Date(
-                                                                listDepo[idTx].returnValues.timeOfTransaction * 1000,
-                                                            ).toLocaleString('en-US', {
-                                                                timeZone: 'Asia/Jakarta',
-                                                            })}
-                                                        </td>
+                                                    <td className='py-2 px-4'>TimeStamp</td>
+                                                    <td className='py-2 px-4'>
+                                                        :{' '}
+                                                        {new Date(
+                                                            listDepo[idTx].returnValues
+                                                                .timeOfTransaction * 1000,
+                                                        ).toLocaleString('en-US', {
+                                                            timeZone: 'Asia/Jakarta',
+                                                        })}
+                                                    </td>
                                                 </tr>
                                                 <tr className='border-b border-purplemain'>
                                                     <td className='py-2 px-4'>Block Hash</td>
@@ -163,7 +164,7 @@ export default function ModalDepo({isOpen, onClose, idTx, listDepo, header}) {
                                     onClick={onClose}
                                     type='button'
                                     className='text-red-600 bg-lightmain-800 hover:bg-red-600 hover:text-white  font-medium rounded-lg text-sm px-5 py-2.5 text-center '>
-                                    Close 
+                                    Close
                                 </button>
                             </div>
                         </div>

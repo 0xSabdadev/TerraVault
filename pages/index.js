@@ -69,7 +69,7 @@ function User({user}) {
     }
 
     return (
-        <div>
+        <div className='min-h-screen'>
             <Head>
                 <title>VaultHarmony - Dashboard</title>
             </Head>

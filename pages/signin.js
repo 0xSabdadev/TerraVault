@@ -42,7 +42,7 @@ function SignIn() {
             toast.success('Successfully signed in')
             push(url)
         } catch (err) {
-            toast.error(err.message)
+            toast.error('User rejected action', err.message)
         } finally {
             setLoading(false)
         }
@@ -61,14 +61,18 @@ function SignIn() {
                             alt=''
                         />
                         <p className='font-roboto text-md md:text-sm mt-4 text-justify text-purplemain'>
-                        Revolutionizing Security in Decentralized Finance: Terra Vault, a state-of-the-art decentralized application (dApp), 
-                        pioneers advanced security with its 3-of-3 Threshold Signature smart contract on Ethereum. Your ultimate safeguard for 
-                        digital assets in the Ethereum blockchain transition towards Smart Accounts.
+                            Revolutionizing Security in Decentralized Finance: Terra Vault, a
+                            state-of-the-art decentralized application (dApp), pioneers advanced
+                            security with its 3-of-3 Threshold Signature smart contract on Ethereum.
+                            Your ultimate safeguard for digital assets in the Ethereum blockchain
+                            transition towards Smart Accounts.
                         </p>
 
                         <div className='mt-6 grid grid-cols-4 items-center text-purplemain'>
                             <hr className='border-purplemain' />
-                            <p className='font-roboto text-center text-md md:text-sm grid-cols-subgrid col-span-2'>Launch Wallet</p>
+                            <p className='font-roboto text-center text-md md:text-sm grid-cols-subgrid col-span-2'>
+                                Launch Wallet
+                            </p>
                             <hr className='border-purplemain' />
                         </div>
                         <button

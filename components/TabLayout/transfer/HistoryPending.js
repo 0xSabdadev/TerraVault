@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 import {useEffect, useState} from 'react'
-import data1 from '../../../build/contracts/MultiSigTA.json' assert {type: 'json'}
+import data1 from '../../../build/contracts/ThresholdSignature.json' assert {type: 'json'}
 import {toast} from 'sonner'
 import ModalPending from './ModalPending'
 
@@ -86,19 +86,15 @@ export default function HistoryPending({
             const contractInstance = new web3.eth.Contract(data1.abi, currentSelectedWallet, {
                 from: user.address,
             })
-            const messageToSign = web3.utils.soliditySha3(
-                {type: 'address', value: currentSelectedWallet},
-                {type: 'uint256', value: approveId},
-            )
-            // Sign the message
-            const signature = await web3.eth.personal.sign(
-                web3.utils.utf8ToHex(messageToSign),
-                user.address, // Signing account
-                '',
-            )
-            const cancel = await contractInstance.methods
+
+            const message = web3.utils.soliditySha3({t: 'uint256', v: approveId})
+
+            const signature = await web3.eth.personal.sign(message, user.address, '')
+
+            const tx = await contractInstance.methods
                 .approveTransferRequest('ETH', approveId, signature)
                 .send({from: user.address})
+
             toast.success('Approval successful!')
             loadPendingTransfers(currentSelectedWallet)
             loadAccountsTables(currentSelectedWallet, 'transferCreated')

@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 import {useEffect, useState} from 'react'
 import {useRouter} from 'next/router'
-import data1 from '../../../build/contracts/MultiSigTA.json' assert {type: 'json'}
+import data1 from '../../../build/contracts/ThresholdSignature.json' assert {type: 'json'}
 import {toast} from 'sonner'
 
 export default function ModalPending({
@@ -83,7 +83,7 @@ export default function ModalPending({
     return (
         <>
             {isOpen && (
-                <div className='flex fixed z-30 top-0 left-0 w-full h-full justify-center items-center bg-[#00000080]'>
+                <div className='flex fixed z-30 top-0 left-0 w-full h-full justify-center items-center bg-[#d5d7da80]'>
                     <div
                         className='relative p-4 w-full max-w-2xl max-h-full'
                         onClick={e => e.stopPropagation()}>
@@ -127,16 +127,17 @@ export default function ModalPending({
                                                     <td className='py-2 px-4'>: {idTx}</td>
                                                 </tr>
                                                 <tr className='border-b border-purplemain'>
-                                                        <td className='py-2 px-4'>TimeStamp</td>
-                                                        <td className='py-2 px-4'>
-                                                            :{' '}
-                                                            {new Date(
-                                                                listCreated[listCreatedUsed].returnValues.timeOfTransaction *
-                                                                    1000,
-                                                            ).toLocaleString('en-US', {
-                                                                timeZone: 'Asia/Jakarta',
-                                                            })}
-                                                        </td>
+                                                    <td className='py-2 px-4'>TimeStamp</td>
+                                                    <td className='py-2 px-4'>
+                                                        :{' '}
+                                                        {new Date(
+                                                            listCreated[listCreatedUsed]
+                                                                .returnValues.timeOfTransaction *
+                                                                1000,
+                                                        ).toLocaleString('en-US', {
+                                                            timeZone: 'Asia/Jakarta',
+                                                        })}
+                                                    </td>
                                                 </tr>
                                                 <tr className='border-b border-purplemain'>
                                                     <td className='py-2 px-4'>Block Hash</td>

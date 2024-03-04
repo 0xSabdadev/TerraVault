@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 import {useEffect, useState} from 'react'
-import data1 from '../../../build/contracts/MultiSigTA.json' assert {type: 'json'}
+import data1 from '../../../build/contracts/ThresholdSignature.json' assert {type: 'json'}
 import {toast} from 'sonner'
 
 export default function ListWallet({list, user, addr, loadWalletOwners}) {

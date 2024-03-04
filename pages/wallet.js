@@ -20,7 +20,7 @@ import Web3 from 'web3'
 import {useEffect, useRef, useState} from 'react'
 import {useRouter} from 'next/router'
 import data from '../build/contracts/MultiSigFactory.json' assert {type: 'json'}
-import data1 from '../build/contracts/MultiSigTA.json' assert {type: 'json'}
+import data1 from '../build/contracts/ThresholdSignature.json' assert {type: 'json'}
 import {toast} from 'sonner'
 import axios from 'axios'
 import ModalDepo from '../components/TabLayout/account/ModalDepo'

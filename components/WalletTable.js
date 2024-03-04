@@ -34,7 +34,7 @@ export default function WalletTable({dataOwner}) {
                             </tr>
                         </thead>
                         <tbody>
-                            {Array.isArray(dataOwner) ? (
+                            {dataOwner && Array.isArray(dataOwner) ? (
                                 dataOwner.map((wallet, idx) => (
                                     <tr
                                         key={idx}
@@ -61,7 +61,7 @@ export default function WalletTable({dataOwner}) {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan='3' className='px-6 py-4 text-white text-center'>
+                                    <td colSpan='3' className='px-6 py-4 text-black text-center'>
                                         Invalid data format
                                     </td>
                                 </tr>

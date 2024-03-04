@@ -2,25 +2,24 @@
 
 pragma solidity ^0.8.0;
 
-import "./Multisig.sol";
+import "./ThresholdSignature.sol";
 
 contract MultiSigFactory{
-
-    struct UserWallets{
+        struct UserWallets{
         address walletAdress;
         uint walletID;
     }
 
     uint id = 0;
     UserWallets[] userWallets;
-    MultiSigTA[] multisigWalletInstances;
+    ThresholdSignature[] multisigWalletInstances;
 
     mapping(address => UserWallets[]) ownersWallets;
 
     event walletCreated(address createdBy, address newWalletContractAddress, uint timeOfTransaction);
 
     function createNewWallet() public{
-        MultiSigTA newMultisigWalletContract = new MultiSigTA(msg.sender);
+        ThresholdSignature newMultisigWalletContract = new ThresholdSignature(msg.sender);
         multisigWalletInstances.push(newMultisigWalletContract);
         UserWallets[] storage newWallet = ownersWallets[msg.sender];
         newWallet.push(UserWallets(address(newMultisigWalletContract),id));

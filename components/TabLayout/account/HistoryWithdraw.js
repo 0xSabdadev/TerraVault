@@ -10,6 +10,7 @@ export default function HistoryWithdraw({listWith}) {
         setIdTx(clickedButtonId)
         setIsModalOpen(true)
     }
+    const reversedList = [...listWith].reverse()
 
     const closeModal = () => {
         setIsModalOpen(false)
@@ -45,7 +46,7 @@ export default function HistoryWithdraw({listWith}) {
                     </thead>
                     <tbody>
                         {Array.isArray(listWith) ? (
-                            listWith.reverse().map((wallet, idx) => (
+                            reversedList.map((wallet, idx) => (
                                 <tr
                                     key={idx}
                                     className='rounded-lg bgGlassmorphismBlury dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600'>

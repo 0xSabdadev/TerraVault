@@ -190,6 +190,7 @@ contract ThresholdSignature {
 
     function createTransferRequest(string memory ticker, address payable receiver, uint amount, bytes memory signature) public onlyOwners tokenExists(ticker) {
         require(balance[msg.sender][ticker] >= amount, "Insufficient balance for transfer");
+        require(amount > 0 ,"amount must be greater than 0");
         // require(walletOwners.length == 3, "TSS requires exactly 3 owners");
         // require(receiver != address(0), "Invalid receiver address");
         for (uint i = 0; i < walletOwners.length; i++) {

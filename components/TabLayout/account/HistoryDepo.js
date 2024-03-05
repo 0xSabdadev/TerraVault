@@ -10,6 +10,7 @@ export default function HistoryDepo({listDepo}) {
         setIdTx(clickedButtonId)
         setIsModalOpen(true)
     }
+    const reversedList = [...listDepo].reverse()
 
     const closeModal = () => {
         setIsModalOpen(false)
@@ -46,7 +47,7 @@ export default function HistoryDepo({listDepo}) {
                     </thead>
                     <tbody>
                         {Array.isArray(listDepo) ? (
-                            listDepo.reverse().map((wallet, idx) => (
+                            reversedList.map((wallet, idx) => (
                                 <tr
                                     key={idx}
                                     className='rounded-lg bgGlassmorphismBlury dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600'>

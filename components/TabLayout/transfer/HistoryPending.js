@@ -21,6 +21,7 @@ export default function HistoryPending({
     const [approveId, setApprovelId] = useState('')
     const [txHash, setTxHash] = useState('')
     const [currentSelectedWallet, setCurrentSelectedWallet] = useState('')
+    const reversedList = [...listPending].reverse()
 
     useEffect(() => {
         const retrievedUserWalletObject = localStorage.getItem('userWalletObject')
@@ -137,7 +138,7 @@ export default function HistoryPending({
                     </thead>
                     <tbody>
                         {Array.isArray(listPending) ? (
-                            listPending.reverse().map((wallet, idx) => (
+                            reversedList.map((wallet, idx) => (
                                 <tr
                                     key={idx}
                                     className='rounded-lg bgGlassmorphismBlury dark:bg-gray-800 dark:border-gray-700  dark:hover:bg-gray-600'>

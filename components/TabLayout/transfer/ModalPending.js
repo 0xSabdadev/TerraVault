@@ -117,9 +117,9 @@ export default function ModalPending({
                             <div className='p-4 md:p-5 space-y-4'>
                                 {!isLoading ? (
                                     <>
-                                        <button className='px-3 py-3 rounded-full bgGradient mb-3 text-sm font-bold w-full text-center text-white'>
+                                        <div className='px-3 py-3 rounded-full bgGradient mb-3 text-sm font-bold w-full text-center text-white'>
                                             <p>{listCreated[listCreatedUsed].transactionHash}</p>
-                                        </button>
+                                        </div>
                                         <table className='font-roboto w-full text-sm text-left rtl:text-right text-purplemain dark:text-gray-400 border  border-purplemain'>
                                             <tbody>
                                                 <tr className='border-b border-purplemain'>

@@ -137,6 +137,8 @@ contract ThresholdSignature {
     }
 
     function removeWalletOwner(address owner, address walletAddress, address _address) public onlyOwners {
+        require(owner != mainOwner, "Cannot remove main owner");
+        require(owner != msg.sender, "Cannot remove yourself");
         bool hasBeenFound = false;
         uint ownerIndex;
         for (uint i = 0; i < walletOwners.length; i++) {
